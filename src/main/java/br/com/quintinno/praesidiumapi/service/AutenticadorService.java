@@ -35,8 +35,6 @@ public class AutenticadorService implements UserDetailsService {
 
         String escopo = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(" "));
 
-        JwtCla
-
         return null;
     }
 
