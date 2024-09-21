@@ -1,13 +1,13 @@
 package br.com.quintinno.praesidiumapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.quintinno.praesidiumapi.entity.UsuarioEntity;
 import br.com.quintinno.praesidiumapi.service.AutenticadorService;
 
 @RestController
@@ -23,8 +23,8 @@ public class AutenticadorController {
     }
 
     @GetMapping("/{identificador}")
-    public UsuarioEntity findOne(@PathVariable(name = "identificador") String identificador) {
-        return this.autorizadorService.findOne(identificador);
+    public UserDetails findOne(@PathVariable(name = "identificador") String identificador) {
+        return this.autorizadorService.loadUserByUsername(identificador);
     }
 
 }
